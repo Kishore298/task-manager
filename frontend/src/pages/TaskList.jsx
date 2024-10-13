@@ -4,7 +4,7 @@ import axios from "axios";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://task-manager-tedo.onrender.com");
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
@@ -19,7 +19,7 @@ const TaskList = () => {
         if (!token) {
           throw new Error("No token found");
         }
-        const response = await axios.get("http://localhost:5000/api/tasks", {
+        const response = await axios.get("https://task-manager-tedo.onrender.com/api/tasks", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -65,7 +65,7 @@ const TaskList = () => {
     try {
       const token = localStorage.getItem("token");
       const { data } = await axios.post(
-        "http://localhost:5000/api/tasks",
+        "https://task-manager-tedo.onrender.com/api/tasks",
         { taskName, dueDate },
         {
           headers: {
@@ -86,7 +86,7 @@ const TaskList = () => {
     try {
       const token = localStorage.getItem("token");
       const { data } = await axios.put(
-        `http://localhost:5000/api/tasks/${id}/complete`,
+        `https://task-manager-tedo.onrender.com/api/tasks/${id}/complete`,
         null,
         {
           headers: {
@@ -113,7 +113,7 @@ const TaskList = () => {
     try {
       const token = localStorage.getItem("token");
       const { data } = await axios.put(
-        `http://localhost:5000/api/tasks/${editingTaskId}`,
+        `https://task-manager-tedo.onrender.com/api/tasks/${editingTaskId}`,
         { taskName, dueDate },
         {
           headers: {
@@ -134,7 +134,7 @@ const TaskList = () => {
   const deleteTask = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`, {
+      await axios.delete(`https://task-manager-tedo.onrender.com/api/tasks/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

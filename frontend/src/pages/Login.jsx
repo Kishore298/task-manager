@@ -12,7 +12,7 @@ const Login = ({ setUser }) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "https://task-manager-tedo.onrender.com/api/auth/login",
         { email, password }
       );
       localStorage.setItem("token", data.token);
